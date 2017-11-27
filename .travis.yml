@@ -1,0 +1,12 @@
+language: bash
+services: docker
+
+before_script:
+- docker build -t amixsi/phantomjs:latest -t amixsi/phantomjs:1.0 -t amixsi/phantomjs:1 .
+
+script:
+- docker run --rm -it amixsi/phantomjs bash --version
+
+after_success:
+- docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+- docker push amixsi/phantomjs
