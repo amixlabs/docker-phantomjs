@@ -1,8 +1,10 @@
+if: tag IS present
+
 language: bash
 services: docker
 
 before_script:
-- docker build -t amixsi/phantomjs:latest -t amixsi/phantomjs:1.0 -t amixsi/phantomjs:1 .
+- docker build -t amixsi/phantomjs:latest -t amixsi/phantomjs:$TRAVIS_TAG -t amixsi/phantomjs:${TRAVIS_TAG//.*} .
 
 script:
 - docker run --rm -it amixsi/phantomjs bash --version

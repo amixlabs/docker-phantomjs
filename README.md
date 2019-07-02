@@ -20,5 +20,5 @@ Publish
 
 ```bash
 docker login
-docker push amixsi/centos
+docker push amixsi/phantomjs
 ```
